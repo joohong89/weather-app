@@ -1,0 +1,161 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 12px;
+  background: url('assets/bg-dark.png') no-repeat center center fixed;
+  /*color-scheme: light dark;*/
+  /*color: rgba(255, 255, 255, 0.87);*/
+  /*background-color: #242424;*/
+
+  /*font-synthesis: none;*/
+  /*text-rendering: optimizeLegibility;*/
+  /*-webkit-font-smoothing: antialiased;*/
+  /*-moz-osx-font-smoothing: grayscale;*/
+
+
+}
+
+body {
+  background-color: transparent;
+
+}
+
+.main {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.btn-primary {
+  --bs-primary: #261249; /* Change the primary color */
+  --bs-btn-hover-bg: #522698;
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-border-color: var(--bs-btn-hover-bg);
+  --bs-btn-active-bg: var(--bs-btn-hover-bg);
+  --bs-btn-active-border-color: var(--bs-btn-hover-bg);
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
+
+  background-color: #261249;
+
+}
+
+.modal {
+  --bs-modal-bg: #2A2342;
+  --bs-modal-header-border-color: var(--bs-border-color);
+  --bs-modal-header-border-width: var(--bs-border-width);
+  --bs-modal-title-line-height: 1.5;
+  --bs-modal-footer-gap: 0.5rem;
+  --bs-modal-footer-bg: ;
+  --bs-modal-footer-border-color: var(--bs-border-color);
+  --bs-modal-footer-border-width: var(--bs-border-width);
+
+  .modal-content {
+    background-color: var(--bs-modal-bg);
+  }
+}
+
+.search-city-wrapper {
+  .search-city-button {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .search-city-search {
+    .form-control {
+      + label:after {
+        background-color: transparent;
+      }
+      background: #1A1A1A80;
+    }
+  }
+}
+
+
+.weather-search-wrapper {
+  margin-top: 6rem;
+  border-radius: 1rem;
+  padding: 2rem;
+  /*background: rgba(0,0,0,0.3);*/
+  background: #1A1A1A4D;
+
+  .current-weather-wrapper {
+
+    position: relative;
+    .current-weather-no-information {
+        height: 7rem;
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+    .current-weather-temperature {
+      .current-weather-temperature-header, .current-weather-temperature-footer {
+        font-size: 1rem;
+        font-weight: bold;
+        z-index: 2;
+      }
+      .current-weather-temperature-info {
+        font-size: 5rem;
+        margin: 0;
+        line-height: 0.9;
+      }
+    }
+
+
+    .current-weather-image {
+      position: absolute;
+      width: 15rem;
+      top: -7.5rem;
+      right: 0;
+      z-index: 1;
+      img {
+        width: 100%
+      }
+    }
+  }
+  .search-history-wrapper {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    background: #1A1A1A4D;
+
+
+    .search-history-card {
+      display: flex;
+      padding: 1rem;
+      justify-content: end;
+      background: #1A1A1A80;
+      border-radius: 1rem;
+      margin-top: 1rem;
+
+      .search-history-card-actions {
+        border-radius: 50%;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .current-weather-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .current-weather-temperature {
+      flex-grow: 1;
+    }
+    .current-weather-information {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      text-align: right;
+      flex-grow: 1;
+    }
+    .current-weather-no-information {
+      width: 45%;
+    }
+  }
+}
