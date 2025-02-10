@@ -30,7 +30,7 @@ const CurrentWeather = () => {
     return (
         <>
             <SearchCity onCityChange={cityChange}></SearchCity>
-            {selectedCity && <div>Selected: {selectedCity && Utils.formatLocation(selectedCity.name, selectedCity.state, selectedCity.country)} </div>}
+            {selectedCity && <div className="selected-items mb-2">Showing: {selectedCity && Utils.formatLocation(selectedCity.name, selectedCity.state, selectedCity.country)} </div>}
             <Row className="justify-content-center weather-search-wrapper" >
                 <Col xs="12">
                     <DisplayCurrentWeather createdDatetime={createdDateTime} cityInformation={selectedCity} weatherInformation={weatherInformation}></DisplayCurrentWeather>
