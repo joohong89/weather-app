@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 
 const ToastContext = createContext();
 
-ToastProvider.PropTypes = {
-    children: PropTypes.any
-}
-
 export const ToastProvider  = ({ children }) => {
     const [toasts, setToasts] = useState([]);
 
@@ -34,6 +30,10 @@ export const ToastProvider  = ({ children }) => {
             </ToastContainer>
         </ToastContext.Provider>
     )
+}
+
+ToastProvider.PropTypes = {
+    children: PropTypes.any
 }
 
 
