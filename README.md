@@ -27,6 +27,7 @@ https://weather-app-4q4.pages.dev
 
 
 ## For Future Development
+* To use middleware for API call so API_KEY won't be exposed.
 * To use typeahead instead of showing separate modal for country selection
 * Fully customise bootstrap's theming
 * Add visualisation for rainfall predictions for next few days
@@ -34,7 +35,6 @@ https://weather-app-4q4.pages.dev
 * Have separate `.env.prod` files
 * Config file to store things like toast delay etc. 
 * Localisation to prevent hardcoding words/sentences into page
-* Unit testing
 * Update images (crop and resize with MS Paint ... )
 
 # Development
