@@ -17,6 +17,7 @@ https://weather-app-4q4.pages.dev
 * Luxon
 
 ## Assumptions Made
+* To use high-fidelity mockup as design
 * Only English character can be searched
 * Max content area to be 768px
 * To use localstorage for API to store search history
