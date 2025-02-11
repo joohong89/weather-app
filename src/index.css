@@ -176,6 +176,7 @@ body {
     .current-weather-temperature-state {
       font-size: 1rem;
       font-weight: bold;
+      color: var(--weather-information-color);
     }
 
     .current-weather-information {
