@@ -12,7 +12,8 @@ const DisplayCurrentWeather = ({createdDatetime, cityInformation, weatherInforma
     useEffect(() => {
         if(weatherInformation?.weather && weatherInformation.weather.length > 0){
             let firstWeatherItem = weatherInformation.weather[0];
-            firstWeatherItem && setWeatherCode(firstWeatherItem.icon.slice(0, -1));
+            let path = firstWeatherItem?.icon.slice(0, -1);
+            path && setWeatherCode(path);
         }
 
     }, [weatherInformation])
