@@ -34,7 +34,6 @@ https://weather-app-4q4.pages.dev
 * Add visualisation for rainfall predictions for next few days
 * Compare rainfall (or other parameters) of two locations
 * Have separate `.env.prod` files
-* Config file to store things like toast delay etc. 
 * Localisation to prevent hardcoding words/sentences into page
 * Update images (crop and resize with MS Paint ... )
 

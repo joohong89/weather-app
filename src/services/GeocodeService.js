@@ -1,4 +1,6 @@
 import axios from 'axios';
+import {CONFIG} from "../configs/Config.js";
+import {CONSTANTS} from "../constants/Constants.js";
 
 const API_END_POINT = import.meta.env.VITE_API_END_POINT;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -8,13 +10,13 @@ export const GeocodeService = {
         const params = {
             q: name,
             appid: API_KEY,
-            limit: 10
+            limit: CONFIG.QUERY_LIMIT
         };
 
         try {
             const response =  await axios.get(`${API_END_POINT}/geo/1.0/direct`, {params: params});
 
-            if (response.status !== 200) {
+            if (response.status !== CONSTANTS.HTTP_OK) {
                 throw new Error(`Geocoding API returned an error: ${response.status} - ${response.statusText}`);
             }
 

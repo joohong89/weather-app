@@ -3,10 +3,11 @@ import {Col, Row} from "react-bootstrap";
 import DisplayCurrentWeather from "../components/DisplayCurrentWeather.jsx";
 import {useCallback, useState} from "react";
 import {WeatherService} from "../services/WeatherService.js";
-import {Utils} from "../Utils/Utils.jsx";
+import {Utils} from "../utils/Utils.jsx";
 import SearchHistoryService from "../services/SearchHistoryService.js";
 import SearchHistory from "../components/SearchHistory.jsx";
 import {useToast} from "../context/ToastContext.jsx";
+import {CONSTANTS} from "../constants/Constants.js";
 
 const CurrentWeather = () => {
     const showToast = useToast();
@@ -25,7 +26,7 @@ const CurrentWeather = () => {
             setWeatherInformation(res)
 
         } catch(error) {
-            showToast(error.message, 'danger');
+            showToast(error.message, CONSTANTS.DANGER);
         } finally {
             const timestamp = new Date().getTime();
             SearchHistoryService.addSearch({timestamp, value});

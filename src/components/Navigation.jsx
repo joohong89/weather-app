@@ -6,7 +6,7 @@ const Navigation = () => {
         <Navbar expand="sm">
             <Container>
                 <Nav className="ms-auto">
-                    <Nav.Link href="#home"><ThemeToggle/></Nav.Link>
+                    <Nav.Link><ThemeToggle/></Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

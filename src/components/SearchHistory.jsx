@@ -1,4 +1,4 @@
-import {Utils} from "../Utils/Utils.jsx";
+import {Utils} from "../utils/Utils.jsx";
 import {Button} from "react-bootstrap";
 import {IoMdSearch} from "react-icons/io";
 import {MdDelete} from "react-icons/md";

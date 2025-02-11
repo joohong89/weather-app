@@ -3,8 +3,9 @@ import Form from "react-bootstrap/Form";
 import {IoMdSearch} from "react-icons/io";
 import {GeocodeService} from "../services/GeocodeService.js";
 import {useCallback, useEffect, useState} from "react";
-import {Utils} from "../Utils/Utils.jsx";
+import {Utils} from "../utils/Utils.jsx";
 import {useToast} from "../context/ToastContext.jsx";
+import {CONSTANTS} from "../constants/Constants.js";
 
 const SearchCity = ({onCityChange, isParentLoading}) => {
     const showToast = useToast();
@@ -29,7 +30,7 @@ const SearchCity = ({onCityChange, isParentLoading}) => {
 
     const validateCity = (city) => {
 
-        const cityRegex = /^[a-zA-Z\s\-']+$/;
+        const cityRegex = CONSTANTS.INPUT_REGEX;
         if(!city) {
             return { isValid: false, message: "City is required." };
         }
@@ -62,12 +63,12 @@ const SearchCity = ({onCityChange, isParentLoading}) => {
 
                 if(results && results.length === 1 ) {
                     onCityChange(results[0]);
-                    showToast('City found', 'success');
+                    showToast('City found', CONSTANTS.SUCCESS);
                     return
                 }
                 handleShow();
             } catch(error) {
-                showToast(error.message, 'danger');
+                showToast(error.message, CONSTANTS.DANGER);
             } finally {
                 setIsLoading(false);
             }

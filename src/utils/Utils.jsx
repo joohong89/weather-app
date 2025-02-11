@@ -1,4 +1,5 @@
 import {DateTime} from "luxon";
+import {CONSTANTS} from "../constants/Constants.js";
 
 export const Utils = {
     formatLocation(city, state,country) {
@@ -19,6 +20,6 @@ export const Utils = {
             return;
         }
         let dt = DateTime.fromMillis(timeStamp); // Assuming timestamp is in milliseconds\
-        return dt.toFormat('dd-MM-yyyy hh:mma');
+        return dt.toFormat(CONSTANTS.DD_MM_YYYY_HH_MM_A);
     }
 }

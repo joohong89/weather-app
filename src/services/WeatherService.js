@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {CONSTANTS} from "../constants/Constants.js";
 
 const API_END_POINT = import.meta.env.VITE_API_END_POINT;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -9,13 +10,13 @@ export const WeatherService = {
             lat,
             lon,
             appid: API_KEY,
-            units: 'metric'
+            units: CONSTANTS.METRIC
         };
 
         try {
             const response =  await axios.get(`${API_END_POINT}/data/2.5/weather`, {params: params});
 
-            if (response.status !== 200) {
+            if (response.status !== CONSTANTS.HTTP_OK) {
                 throw new Error(`Weather API returned an error: ${response.status} - ${response.statusText}`);
             }
 

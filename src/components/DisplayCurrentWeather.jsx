@@ -1,5 +1,5 @@
 import {Col, Image, Row} from "react-bootstrap";
-import {Utils} from "../Utils/Utils.jsx";
+import {Utils} from "../utils/Utils.jsx";
 import {useMemo} from "react";
 
 const DisplayCurrentWeather = ({createdDatetime, cityInformation, weatherInformation}) => {
