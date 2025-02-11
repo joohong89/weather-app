@@ -271,4 +271,10 @@ body {
       width: 45%;
     }
   }
+
+
+  .current-weather-image {
+    width: 12rem !important;
+    top: -5.5rem !important;
+  }
 }
