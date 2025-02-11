@@ -182,6 +182,9 @@ body {
     .current-weather-information {
       color: var(--weather-information-color);
     }
+    .current-weather-results, .current-weather-information {
+      z-index: 2;
+    }
 
     .current-weather-image {
       position: absolute;
