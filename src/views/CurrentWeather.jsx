@@ -6,20 +6,28 @@ import {WeatherService} from "../services/WeatherService.js";
 import {Utils} from "../Utils/Utils.jsx";
 import SearchHistoryService from "../services/SearchHistoryService.js";
 import SearchHistory from "../components/SearchHistory.jsx";
+import {useToast} from "../context/ToastContext.jsx";
 
 const CurrentWeather = () => {
+    const showToast = useToast();
     const [selectedCity, setSelectedCity] = useState('');
     const [weatherInformation, setWeatherInformation] = useState();
     const [createdDateTime, setCreatedDateTime] = useState();
 
     const cityChange = useCallback(async (value) => {
         setSelectedCity(value);
-        const timestamp = new Date().getTime();
-        let res = await WeatherService.getWeather(value.lat, value.lon);
-        setWeatherInformation(res)
 
-        SearchHistoryService.addSearch({timestamp, value})
-        setCreatedDateTime(timestamp)
+        try {
+            let res = await WeatherService.getWeather(value.lat, value.lon);
+            setWeatherInformation(res)
+
+        } catch(error) {
+            showToast(error.message, 'danger');
+        } finally {
+            const timestamp = new Date().getTime();
+            SearchHistoryService.addSearch({timestamp, value})
+            setCreatedDateTime(timestamp)
+        }
     },[]);
 
     const handleSearchFromHistory = (value) => {

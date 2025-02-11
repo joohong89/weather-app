@@ -97,12 +97,32 @@ body {
   }
 
   .search-city-search {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: all 5000s ease-in-out 0s;
+      /*transition-property: background-color, color;*/
+      -webkit-text-fill-color: var(--text-color) !important;
+    }
+
     .form-control {
       height: 4rem;
       border-radius: 1rem;
+
       ~label::after {
         background-color: transparent;
       }
+
+
+      &.is-valid {
+        border-color: transparent;
+
+        &:focus {
+          box-shadow: 0 0 0 .25rem rgba(var(--bs-border-color), .25);
+        }
+      }
+
       background: var(--search-city-input);
     }
   }
@@ -189,7 +209,7 @@ body {
         border: 3px var(--search-history-btn-border) solid;
         background: var(--search-history-btn-bg);
         color: var(--search-history-btn-color);
-        font-size: 2rem;
+        font-size: 1rem;
         width: 3rem;
         height: 3rem;
         display: flex;

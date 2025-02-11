@@ -4,8 +4,10 @@ import {IoMdSearch} from "react-icons/io";
 import {GeocodeService} from "../services/GeocodeService.js";
 import {useCallback, useEffect, useState} from "react";
 import {Utils} from "../Utils/Utils.jsx";
+import {useToast} from "../context/ToastContext.jsx";
 
 const SearchCity = ({onCityChange}) => {
+    const showToast = useToast();
     const [cityIndex, setCityIndex] = useState(0);
     const [citySearchTerm, setcitySearchTerm] = useState('');
     const [show, setShow] = useState(false);
@@ -27,6 +29,10 @@ const SearchCity = ({onCityChange}) => {
     const validateCity = (city) => {
 
         const cityRegex = /^[a-zA-Z\s\-']+$/;
+        if(!city) {
+            return { isValid: false, message: "Input is required." };
+        }
+
         if (!cityRegex.test(city)) {
             return { isValid: false, message: "Invalid characters is present." };
         }
@@ -45,14 +51,26 @@ const SearchCity = ({onCityChange}) => {
                 return
             }
 
-            let results = await GeocodeService.getGeocode(citySearchTerm);
-            setCityList(results);
-
-            if(results && results.length === 1 ) {
-                onCityChange(results[0]);
+            if(citySearchTerm.toLowerCase() === 'test') {
+                showToast('API call with the value "test" always return error. Please try with another value', 'danger');
                 return
             }
-            handleShow();
+
+            try {
+                let results = await GeocodeService.getGeocode(citySearchTerm);
+                setCityList(results);
+
+                if(results && results.length === 1 ) {
+                    onCityChange(results[0]);
+                    showToast('City found', 'success');
+                    return
+                }
+                handleShow();
+            } catch(error) {
+                showToast(error.message, 'danger');
+            }
+
+
         }, [citySearchTerm]
     );
 
