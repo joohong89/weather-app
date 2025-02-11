@@ -5,11 +5,9 @@ const Navigation = () => {
     return (
         <Navbar expand="sm">
             <Container>
-
                 <Nav className="ms-auto">
                     <Nav.Link href="#home"><ThemeToggle/></Nav.Link>
                 </Nav>
-                {/*<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>*/}
             </Container>
         </Navbar>
     )

@@ -9,40 +9,38 @@ import {useToast} from "../context/ToastContext.jsx";
 const SearchCity = ({onCityChange}) => {
     const showToast = useToast();
     const [cityIndex, setCityIndex] = useState(0);
-    const [citySearchTerm, setcitySearchTerm] = useState('');
-    const [show, setShow] = useState(false);
+    const [citySearchTerm, setCitySearchTerm] = useState('');
+    const [showModal, setShowModal] = useState(false);
     const [cityList, setCityList] = useState([]);
     const [isValid, setIsValid] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleCancel = () => setShow(false);
+    const handleCancel = () => setShowModal(false);
     const handleConfirm = () => {
-        setShow(false);
+        setShowModal(false);
         if(cityList && cityList.length > 0){
             onCityChange(cityList[cityIndex]);
         }
     }
     const handleShow = () => {
-        setShow(true);
+        setShowModal(true);
     }
 
     const validateCity = (city) => {
 
         const cityRegex = /^[a-zA-Z\s\-']+$/;
         if(!city) {
-            return { isValid: false, message: "Input is required." };
+            return { isValid: false, message: "City is required." };
         }
 
         if (!cityRegex.test(city)) {
-            return { isValid: false, message: "Invalid characters is present." };
+            return { isValid: false, message: "Invalid characters in city name." };
         }
 
         return { isValid: true, message: "" };
     };
 
-    const handleSubmit = useCallback(
-        async () => {
-
+    const handleSubmit = useCallback(async () => {
             const validationResult = validateCity(citySearchTerm);
             setIsValid(validationResult.isValid);
 
@@ -69,19 +67,16 @@ const SearchCity = ({onCityChange}) => {
             } catch(error) {
                 showToast(error.message, 'danger');
             }
-
-
-        }, [citySearchTerm]
+        }, [citySearchTerm, onCityChange, showToast]
     );
 
 
     const onCitySearch = (e) => {
-        setcitySearchTerm(e.target.value);
+        setCitySearchTerm(e.target.value);
     }
 
     const onCityUpdate = (e) => {
-        let id = parseInt(e.target.value, 10);
-        setCityIndex(id);
+        setCityIndex(parseInt(e.target.value, 10));
     }
 
     useEffect(() => {
@@ -116,7 +111,7 @@ const SearchCity = ({onCityChange}) => {
                 </Col>
             </Row>
 
-            <Modal show={show} onHide={handleCancel} className="search-city-search-modal">
+            <Modal show={showModal} onHide={handleCancel} className="search-city-search-modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Select City</Modal.Title>
                 </Modal.Header>
@@ -130,7 +125,7 @@ const SearchCity = ({onCityChange}) => {
                                 </option>
                             )}
                         </Form.Select>
-                        : <div>No city found. Please try again</div>
+                        : <div>No cities found. Please try again</div>
                     }
 
                 </Modal.Body>

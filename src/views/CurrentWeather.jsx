@@ -34,7 +34,6 @@ const CurrentWeather = () => {
         cityChange(value)
     }
 
-
     return (
         <>
             <SearchCity onCityChange={cityChange}></SearchCity>
