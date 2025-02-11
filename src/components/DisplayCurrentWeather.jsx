@@ -1,17 +1,27 @@
 import {Col, Image, Row} from "react-bootstrap";
 import {Utils} from "../Utils/Utils.jsx";
+import {useEffect, useState} from "react";
 
 const DisplayCurrentWeather = ({createdDatetime, cityInformation, weatherInformation}) => {
-
+    const [weatherCode, setWeatherCode] = useState('10');
+    
     const roundValue = (value) => {
         return Utils.roundToOneDecimal(value)
     }
+
+    useEffect(() => {
+        if(weatherInformation?.weather && weatherInformation.weather.length > 0){
+            let firstWeatherItem = weatherInformation.weather[0];
+            firstWeatherItem && setWeatherCode(firstWeatherItem.icon.slice(0, -1));
+        }
+
+    }, [weatherInformation])
 
     return (
        <>
            <div className="current-weather-wrapper">
                <div className="current-weather-image">
-                   <Image src="/src/assets/sun.png" />
+                   <Image src={`/src/assets/${weatherCode}.png`} />
                </div>
                { weatherInformation ?
                    <>
