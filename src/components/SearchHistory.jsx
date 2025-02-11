@@ -25,7 +25,7 @@ const SearchHistory = ({onSearchFromHistory, createdDateTime}) => {
         <div className="search-history-wrapper">
             <h5>Search History</h5>
             {
-                searchHistory && searchHistory.length ? searchHistory.map((item, index) =>
+                searchHistory && searchHistory.length ? searchHistory.map((item) =>
                     <div className="search-history-card" key={item.timestamp}>
                         <div className="search-history-card-city d-flex flex-column align-items-start justify-content-start flex-md-row align-items-md-center justify-md-content-between flex-grow-1">
                             <div className="flex-grow-1">{item.value && Utils.formatLocation(item.value.name, item.value.state, item.value.country)}</div>
