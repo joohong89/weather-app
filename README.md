@@ -1,8 +1,37 @@
-# React + Vite
+# Weather Application
+A simple weather application that retrieves and displays weather information based on user-provided city names.  This app features:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* **City Search:** Users can enter a city name to search for weather information.
+* **Multiple Match Handling:** If multiple cities match the search query, the app presents a selection list, allowing the user to choose the desired location.
+* **Detailed Weather Display:**  Once a city is selected, the app displays relevant weather information, such as temperature, conditions and humidity.
+* **Search History:**  The app maintains a search history using local storage, allowing users to quickly access previously searched locations.
 
-Currently, two official plugins are available:
+## Demo
+https://weather-app-4q4.pages.dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Built Mainly With
+* ReactJs
+* React Router
+* React Boostrap
+* Axios
+* Luxon
+
+## Assumptions Made
+* Only English character can be searched
+* To use localstorage for API to store search history
+* No need to minify and uglify
+* No need to optimize image size
+* Search History is allowed to go infinitely long
+* Image displayed to correspond with weather type
+
+## For Future Development
+* To use typeahead instead of showing separate modal for country selection
+* Fully customise bootstrap's theming
+* Add visualisation for rainfall predictions for next few days
+* Compare rainfall (or other parameters) of two locations
+
+# Development
+`npm run dev`
+
+# Build Dist
+`npm run build`
