@@ -35,6 +35,7 @@ https://weather-app-4q4.pages.dev
 * Config file to store things like toast delay etc. 
 * Localisation to prevent hardcoding words/sentences into page
 * Unit testing
+* Update images (crop and resize with MS Paint ... )
 
 # Development
 `npm run dev`
