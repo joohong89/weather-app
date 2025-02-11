@@ -98,28 +98,26 @@ const SearchCity = ({onCityChange}) => {
                 </Col>
             </Row>
 
-            <Modal show={show} onHide={handleCancel}>
+            <Modal show={show} onHide={handleCancel} className="search-city-search-modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Select City</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     { cityList.length ?
-                        <FloatingLabel
-                            controlId="floatingSelect"
-                            label="Country">
-                            <Form.Select aria-label="Select a city" value={cityIndex} onChange={onCityUpdate} >
-                                {cityList.map((item, index) =>
-                                    <option key={index} value={index}>
-                                        {Utils.formatLocation(item.name, item.state, item.country)}
-                                    </option>
-                                )}
-                            </Form.Select>
-                        </FloatingLabel> : <div>No city found. Please try again</div>
+
+                        <Form.Select aria-label="Refine Search" className="search-city-search-modal-input" value={cityIndex} onChange={onCityUpdate} >
+                            {cityList.map((item, index) =>
+                                <option key={index} value={index}>
+                                    {Utils.formatLocation(item.name, item.state, item.country)}
+                                </option>
+                            )}
+                        </Form.Select>
+                        : <div>No city found. Please try again</div>
                     }
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="text-decoration-none" variant="link" onClick={handleCancel}>
+                    <Button className="text-decoration-none modal-close-button" variant="link" onClick={handleCancel}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleConfirm}>

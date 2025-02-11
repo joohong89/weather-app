@@ -34,9 +34,9 @@ const SearchHistory = ({onSearchFromHistory, createdDateTime}) => {
                             <div className="ms-md-3 ms-0 d-flex align-items-center"> {Utils.formatTimeStamp(item.timestamp)}</div>
                         </div>
 
-                        <div  className="ms-3">
-                            <Button className="search-history-card-actions" variant="outline-secondary" onClick={() => searchFromHistory(item.value)}><IoMdSearch /></Button>
-                            <Button className="search-history-card-actions ms-1" variant="outline-secondary" onClick={() => deleteFromHistory(item.timestamp)}><MdDelete /></Button>
+                        <div  className="ms-3 d-flex">
+                            <Button className="search-history-card-actions" onClick={() => searchFromHistory(item.value)}><IoMdSearch /></Button>
+                            <Button className="search-history-card-actions ms-1" onClick={() => deleteFromHistory(item.timestamp)}><MdDelete /></Button>
                         </div>
                     </div>
                 )

@@ -20,13 +20,13 @@ const DisplayCurrentWeather = ({createdDatetime, cityInformation, weatherInforma
                            <span className="current-weather-temperature-header">Today&#39;s Weather</span>
                            <h1 className="current-weather-temperature-info">{weatherInformation? roundValue(weatherInformation.main.temp) : '-'}°</h1>
                            <span className="current-weather-temperature-footer">H: {weatherInformation? roundValue(weatherInformation.main.temp_max) : '-'}° L: {weatherInformation? roundValue(weatherInformation.main.temp_min) : '-'}°</span>
-                           <span className="d-md-none d-block"> {cityInformation && Utils.formatStateAndCountry(cityInformation.state, cityInformation.country)} </span>
+                           <span className="d-md-none d-block current-weather-temperature-state"> {cityInformation && Utils.formatStateAndCountry(cityInformation.state, cityInformation.country)} </span>
                        </div>
                    </div>
                    <div className="current-weather-information">
                        {weatherInformation &&
                            <Row className="justify-content-between w-100 flex-column-reverse flex-md-row">
-                               <Col md="auto" className="d-none d-md-block"> {cityInformation && Utils.formatStateAndCountry(cityInformation.state, cityInformation.country)} </Col>
+                               <Col md="auto" className="d-none d-md-block current-weather-temperature-state"> {cityInformation && Utils.formatStateAndCountry(cityInformation.state, cityInformation.country)} </Col>
                                <Col md="auto"> {Utils.formatTimeStamp(createdDatetime)} </Col>
                                <Col md="auto"> Humidity: {weatherInformation? weatherInformation.main.humidity : '-'}% </Col>
                                <Col md="auto"> {weatherInformation? weatherInformation.weather.map((item, index) => <span key={index}>{item.main}</span>) : '-' } </Col>
