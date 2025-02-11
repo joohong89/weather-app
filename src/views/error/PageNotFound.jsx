@@ -1,6 +1,9 @@
 const PageNotFound = () => {
     return (
-        <div>PageNotFound</div>
+        <div className="page-not-found">
+            <img src="/images/11.png" alt=""/>
+            Oops, page is not found
+        </div>
     )
 }
 export default PageNotFound

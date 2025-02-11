@@ -238,6 +238,11 @@ body {
   }
 }
 
+.page-not-found {
+  font-size: 5rem;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .current-weather-wrapper {
     display: flex;
