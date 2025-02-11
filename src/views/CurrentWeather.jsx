@@ -1,7 +1,7 @@
 import SearchCity from "../components/SearchCity.jsx";
 import {Col, Row} from "react-bootstrap";
 import DisplayCurrentWeather from "../components/DisplayCurrentWeather.jsx";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useState} from "react";
 import {WeatherService} from "../services/WeatherService.js";
 import {Utils} from "../Utils/Utils.jsx";
 import SearchHistoryService from "../services/SearchHistoryService.js";
@@ -28,7 +28,7 @@ const CurrentWeather = () => {
             SearchHistoryService.addSearch({timestamp, value})
             setCreatedDateTime(timestamp)
         }
-    },[]);
+    },[showToast]);
 
     const handleSearchFromHistory = (value) => {
         cityChange(value)
