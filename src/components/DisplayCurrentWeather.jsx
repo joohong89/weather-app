@@ -22,7 +22,7 @@ const DisplayCurrentWeather = ({createdDatetime, cityInformation, weatherInforma
        <>
            <div className="current-weather-wrapper">
                <div className="current-weather-image">
-                   <Image src={`/src/assets/${weatherCode}.png`} />
+                   <Image src={`/images/${weatherCode}.png`} />
                </div>
                { weatherInformation ?
                    <>
