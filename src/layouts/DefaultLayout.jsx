@@ -3,7 +3,7 @@ import {Container} from "react-bootstrap";
 
 const DefaultLayout = () => {
     return (
-        <Container>
+        <Container  className="p-2 p-md-1">
             <main className="main p-2 p-md-5">
                 <Outlet />  {/* Content from routes goes here */}
             </main>
