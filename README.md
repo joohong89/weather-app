@@ -18,17 +18,23 @@ https://weather-app-4q4.pages.dev
 
 ## Assumptions Made
 * Only English character can be searched
+* Max content area to be 768px
 * To use localstorage for API to store search history
 * No need to minify and uglify
 * No need to optimize image size
 * Search History is allowed to go infinitely long
-* Image displayed to correspond with weather type
+* Image to be changed to correspond with weather type
+
 
 ## For Future Development
 * To use typeahead instead of showing separate modal for country selection
 * Fully customise bootstrap's theming
 * Add visualisation for rainfall predictions for next few days
 * Compare rainfall (or other parameters) of two locations
+* Have separate `.env.prod` files
+* Config file to store things like toast delay etc. 
+* Localisation to prevent hardcoding words/sentences into page
+* Unit testing
 
 # Development
 `npm run dev`
