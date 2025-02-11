@@ -1,7 +1,12 @@
-import React, {createContext, useCallback, useContext, useState} from 'react'
+import {createContext, useCallback, useContext, useState} from 'react'
 import {Toast, ToastContainer} from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const ToastContext = createContext();
+
+ToastProvider.PropTypes = {
+    children: PropTypes.any
+}
 
 export const ToastProvider  = ({ children }) => {
     const [toasts, setToasts] = useState([]);
@@ -30,5 +35,7 @@ export const ToastProvider  = ({ children }) => {
         </ToastContext.Provider>
     )
 }
+
+
 
 export const useToast = () => useContext(ToastContext);
