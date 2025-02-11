@@ -140,7 +140,10 @@ body {
     }
   }
 }
-
+.selected-items {
+  position: relative;
+  z-index: 2;
+}
 .weather-search-wrapper {
   border-radius: 1rem;
   padding: 2rem;
@@ -241,6 +244,9 @@ body {
 .page-not-found {
   font-size: 5rem;
   text-align: center;
+  .return-link {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
