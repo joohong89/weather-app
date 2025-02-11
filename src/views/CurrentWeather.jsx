@@ -13,11 +13,14 @@ const CurrentWeather = () => {
     const [selectedCity, setSelectedCity] = useState('');
     const [weatherInformation, setWeatherInformation] = useState();
     const [createdDateTime, setCreatedDateTime] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const cityChange = useCallback(async (value) => {
         setSelectedCity(value);
 
         try {
+            setIsLoading(true);
             let res = await WeatherService.getWeather(value.lat, value.lon);
             setWeatherInformation(res)
 
@@ -25,8 +28,9 @@ const CurrentWeather = () => {
             showToast(error.message, 'danger');
         } finally {
             const timestamp = new Date().getTime();
-            SearchHistoryService.addSearch({timestamp, value})
-            setCreatedDateTime(timestamp)
+            SearchHistoryService.addSearch({timestamp, value});
+            setCreatedDateTime(timestamp);
+            setIsLoading(false);
         }
     },[showToast]);
 
@@ -36,7 +40,7 @@ const CurrentWeather = () => {
 
     return (
         <>
-            <SearchCity onCityChange={cityChange}></SearchCity>
+            <SearchCity onCityChange={cityChange} isParentLoading={isLoading}></SearchCity>
             {selectedCity && <div className="selected-items mb-2">Showing: {selectedCity && Utils.formatLocation(selectedCity.name, selectedCity.state, selectedCity.country)} </div>}
             <Row className="justify-content-center weather-search-wrapper" >
                 <Col xs="12">

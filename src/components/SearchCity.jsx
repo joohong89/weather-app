@@ -6,7 +6,7 @@ import {useCallback, useEffect, useState} from "react";
 import {Utils} from "../Utils/Utils.jsx";
 import {useToast} from "../context/ToastContext.jsx";
 
-const SearchCity = ({onCityChange}) => {
+const SearchCity = ({onCityChange, isParentLoading}) => {
     const showToast = useToast();
     const [cityIndex, setCityIndex] = useState(0);
     const [citySearchTerm, setCitySearchTerm] = useState('');
@@ -14,6 +14,7 @@ const SearchCity = ({onCityChange}) => {
     const [cityList, setCityList] = useState([]);
     const [isValid, setIsValid] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleCancel = () => setShowModal(false);
     const handleConfirm = () => {
@@ -55,6 +56,7 @@ const SearchCity = ({onCityChange}) => {
             }
 
             try {
+                setIsLoading(true)
                 let results = await GeocodeService.getGeocode(citySearchTerm);
                 setCityList(results);
 
@@ -66,6 +68,8 @@ const SearchCity = ({onCityChange}) => {
                 handleShow();
             } catch(error) {
                 showToast(error.message, 'danger');
+            } finally {
+                setIsLoading(false);
             }
         }, [citySearchTerm, onCityChange, showToast]
     );
@@ -94,6 +98,7 @@ const SearchCity = ({onCityChange}) => {
                     >
 
                         <Form.Control type="text"
+                                      disabled={isLoading || isParentLoading}
                                       value={citySearchTerm}
                                       onChange={onCitySearch}
                                       placeholder="Enter City"
@@ -107,7 +112,7 @@ const SearchCity = ({onCityChange}) => {
 
                 </Col>
                 <Col xs="auto" className="p-0">
-                    <Button className="search-city-button" type="submit" onClick={handleSubmit}><IoMdSearch /></Button>
+                    <Button className="search-city-button" type="submit" disabled={isLoading || isParentLoading} onClick={handleSubmit}><IoMdSearch /></Button>
                 </Col>
             </Row>
 
