@@ -10,6 +10,8 @@
   --bs-btn-hover-bg: #261249;
   --search-history-btn-color: #9391A0;
   --search-history-btn-bg: white;
+  --search-history-btn-hover: #261249;
+  --search-history-btn-text-hover: white;
   --search-history-btn-border: white;
   --weather-color: var(--bs-primary);
   --weather-information-color: #666666;
@@ -30,6 +32,8 @@
   --bs-btn-hover-bg: #6C40B5;
   --search-history-btn-color: #9391A0;
   --search-history-btn-bg: transparent;
+  --search-history-btn-hover: #6C40B5;
+  --search-history-btn-text-hover: white;
   --search-history-btn-border: #9391A0;
   --weather-color: white;
   --weather-information-color: #white;
@@ -225,6 +229,11 @@ body {
         align-items: center;
         .btn {
           box-shadow: 0 4px 12px 0 #0000001A;
+        }
+        &:hover {
+          background-color: var(--search-history-btn-hover);
+          border-color: var(--search-history-btn-hover);
+          color: var(--search-history-btn-text-hover);
         }
       }
     }
