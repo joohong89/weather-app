@@ -43,7 +43,7 @@ const CurrentWeather = () => {
         <>
             <SearchCity onCityChange={cityChange} isParentLoading={isLoading}></SearchCity>
             {selectedCity && <div className="selected-items mb-2">Showing: {selectedCity && Utils.formatLocation(selectedCity.name, selectedCity.state, selectedCity.country)} </div>}
-            <Row className="justify-content-center weather-search-wrapper" >
+            <Row className="justify-content-center content-wrapper" >
                 <Col xs="12">
                     <DisplayCurrentWeather createdDatetime={createdDateTime} cityInformation={selectedCity} weatherInformation={weatherInformation}></DisplayCurrentWeather>
                 </Col>

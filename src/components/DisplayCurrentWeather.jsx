@@ -1,6 +1,7 @@
 import {Col, Image, Row} from "react-bootstrap";
 import {Utils} from "../utils/Utils.jsx";
 import {useMemo} from "react";
+import {Link} from "react-router";
 
 const DisplayCurrentWeather = ({createdDatetime, cityInformation, weatherInformation}) => {
 
@@ -34,7 +35,9 @@ const DisplayCurrentWeather = ({createdDatetime, cityInformation, weatherInforma
                                <Col md="auto" className="d-none d-md-block current-weather-temperature-state"> {cityInformation && Utils.formatStateAndCountry(cityInformation?.state, cityInformation?.country)} </Col>
                                <Col md="auto"> {Utils.formatTimeStamp(createdDatetime)} </Col>
                                <Col md="auto"> Humidity: { weatherInformation?.main?.humidity ?? '-'}% </Col>
-                               <Col md="auto"> { weatherInformation?.weather.map((item, index) => <span key={index}>{item.main}</span>) ?? '-' } </Col>
+                               <Col md="auto">
+                                   { weatherInformation?.weather ? <Link to={`/forecast/${weatherInformation.coord?.lat}/${weatherInformation.coord?.lon}`}>{weatherInformation.weather[0]?.main}</Link> : '-' }
+                               </Col>
                            </Row>
                        }
                    </div></> : <div className="current-weather-no-information">

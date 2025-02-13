@@ -148,10 +148,9 @@ body {
   position: relative;
   z-index: 2;
 }
-.weather-search-wrapper {
+.content-wrapper {
   border-radius: 1rem;
   padding: 2rem;
-  /*background: rgba(0,0,0,0.3);*/
   background: var(--weather-seach-panel);
 
   .current-weather-wrapper {
@@ -261,6 +260,20 @@ body {
     font-size: 2rem;
   }
 }
+
+.custom-chart {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: var(--weather-seach-history-panel);
+
+  .MuiChartsAxis-line, .MuiChartsAxis-tick {
+    stroke: var(--text-color) !important;
+  }
+  .MuiChartsAxis-tickLabel, .MuiChartsAxis-label, .MuiChartsLegend-root text {
+    fill: var(--text-color) !important;
+  }
+}
+
 
 @media (max-width: 768px) {
   :root {

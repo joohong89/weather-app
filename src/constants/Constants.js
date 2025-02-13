@@ -6,5 +6,8 @@ export const CONSTANTS = {
     STORAGE_KEY: "SEARCH_HISTORY",
     METRIC: "METRIC",
     HTTP_OK: 200,
-    DD_MM_YYYY_HH_MM_A: "dd-MM-yyyy hh:mma"
+    DD_MM_YYYY_HH_MM_A: "dd-MM-yyyy hh:mma",
+    DD_LLL: "dd LLL",
+    HH_MM: "HH:mm",
+    CHART_COLOR: "#4CAF50"
 }
