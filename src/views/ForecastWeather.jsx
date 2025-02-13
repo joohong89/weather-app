@@ -4,14 +4,17 @@ import {WeatherService} from "../services/WeatherService.js";
 import { BarChart } from '@mui/x-charts/BarChart';
 import {DateTime} from "luxon";
 import {CONSTANTS} from "../constants/Constants.js";
+import {useToast} from "../context/ToastContext.jsx";
 
 const ForecastWeather = () => {
     const{lat, lon} = useParams();
     const [rain, setRain] = useState([]);
+    const [cityName, setCityName] = useState('');
     const chartSetting = {
         width: 600,
         height: 300,
     };
+    const showToast = useToast();
 
     const valueFormatter = (value) => {
         let dt = DateTime.fromSeconds(value)
@@ -19,18 +22,21 @@ const ForecastWeather = () => {
     }
 
     const fetchForecastWeather = useCallback(async() => {
-        let res = await WeatherService.getForecast(lat, lon);
+        try {
+            let res = await WeatherService.getForecast(lat, lon);
 
-        let rain = res?.list.map(item => ({
-            dt: item.dt,
-            rain: item.rain?.['3h'] ?? 0,
-            wind: item.wind?.speed ?? 0
-        }));
+            let rain = res?.list.map(item => ({
+                dt: item.dt,
+                rain: item.rain?.['3h'] ?? 0,
+                wind: item.wind?.speed ?? 0
+            }));
 
-        setRain(rain);
-
-    }, [lat, lon]);
-
+            setRain(rain);
+            setCityName(res?.city?.name);
+        } catch (e) {
+            showToast(e, CONSTANTS.DANGER)
+        }
+    }, [lat, lon, showToast]);
 
 
     useEffect(() => {
@@ -41,7 +47,7 @@ const ForecastWeather = () => {
         <>
             <div className="d-flex justify-content-center content-wrapper flex-column ">
                 <div>
-                    <h5>Forecast</h5>
+                    <h5>Forecast for {cityName}</h5>
                     <span>The following metrics shows weather forecast for the next 3 days. Interval is set at 3 hours.</span>
                 </div>
                 <BarChart
