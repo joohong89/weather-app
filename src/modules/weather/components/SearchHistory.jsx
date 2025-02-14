@@ -1,9 +1,9 @@
-import {Utils} from "../utils/Utils.jsx";
+import {Utils} from "../../../utils/Utils.jsx";
 import {Button} from "react-bootstrap";
 import {IoMdSearch} from "react-icons/io";
 import {MdDelete} from "react-icons/md";
 import {useCallback, useEffect, useState} from "react";
-import SearchHistoryService from "../services/SearchHistoryService.js";
+import SearchHistoryService from "../../../services/SearchHistoryService.js";
 
 const SearchHistory = ({onSearchFromHistory, createdDateTime}) => {
     const [searchHistory, setSearchHistory] = useState([]);

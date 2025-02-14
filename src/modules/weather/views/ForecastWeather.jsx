@@ -1,10 +1,10 @@
 import {Link, useParams} from "react-router";
 import {useCallback, useEffect, useState} from "react";
-import {WeatherService} from "../services/WeatherService.js";
+import {WeatherService} from "../../../services/WeatherService.js";
 import { BarChart } from '@mui/x-charts/BarChart';
 import {DateTime} from "luxon";
-import {CONSTANTS} from "../constants/Constants.js";
-import {useToast} from "../context/ToastContext.jsx";
+import {CONSTANTS} from "../../../constants/Constants.js";
+import {useToast} from "../../../context/ToastContext.jsx";
 
 const ForecastWeather = () => {
     const{lat, lon} = useParams();

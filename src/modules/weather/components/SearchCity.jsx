@@ -1,11 +1,11 @@
 import {Button, Col, FloatingLabel, Modal, Row} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {IoMdSearch} from "react-icons/io";
-import {GeocodeService} from "../services/GeocodeService.js";
+import {GeocodeService} from "../../../services/GeocodeService.js";
 import {useCallback, useEffect, useState} from "react";
-import {Utils} from "../utils/Utils.jsx";
-import {useToast} from "../context/ToastContext.jsx";
-import {CONSTANTS} from "../constants/Constants.js";
+import {Utils} from "../../../utils/Utils.jsx";
+import {useToast} from "../../../context/ToastContext.jsx";
+import {CONSTANTS} from "../../../constants/Constants.js";
 
 const SearchCity = ({onCityChange, isParentLoading}) => {
     const showToast = useToast();

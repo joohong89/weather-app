@@ -1,8 +1,8 @@
 import {createBrowserRouter} from "react-router";
 import DefaultLayout from "./layouts/DefaultLayout.jsx";
-import CurrentWeather from "./views/CurrentWeather.jsx";
+import CurrentWeather from "./modules/weather/views/CurrentWeather.jsx";
 import PageNotFound from "./views/error/PageNotFound.jsx";
-import ForecastWeather from "./views/ForecastWeather.jsx";
+import ForecastWeather from "./modules/weather/views/ForecastWeather.jsx";
 
 const appRoute = createBrowserRouter([
     {
