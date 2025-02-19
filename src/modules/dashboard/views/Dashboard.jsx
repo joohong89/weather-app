@@ -1,5 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
-import {WeatherService} from "../../../services/WeatherService.js";
+import {useEffect, useState} from "react";
 import {useToast} from "../../../context/ToastContext.jsx";
 import {CONSTANTS} from "../../../constants/Constants.js";
 import {Col, Row, Spinner} from "react-bootstrap";
@@ -7,12 +6,10 @@ import FiveDayForecast from "../components/FiveDayForecast.jsx";
 import {Utils} from "../../../utils/Utils.jsx";
 import WeatherCard from "../components/WeatherCard.jsx";
 import Chart from "../components/Chart.jsx";
+import useWeather from "../hooks/useWeather.jsx";
 
 const Dashboard = () => {
-    const [weatherInfo, setWeatherInfo] = useState({});
     const [coordinates, setCoordinates] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
     const showToast = useToast();
 
     const getCurrentLocation = () => {
@@ -21,78 +18,16 @@ const Dashboard = () => {
         });
     };
 
-    const fetchWeatherInformation = useCallback( async () => {
-        if (!coordinates) return; // Ensure we only fetch when coordinates are set
-
-        let lat = coordinates.latitude;
-        let long = coordinates.longitude;
-
-        try {
-
-            const [res, now] = await Promise.all([
-                WeatherService.getForecast(lat, long),
-                WeatherService.getWeather(lat, long),
-            ]);
-
-            let hottest, coldest;
-
-            let rainArray = res?.list.map(item => {
-                return {
-                    dt: item.dt,
-                    rain: item.rain?.['3h'] ?? 0
-                }
-            });
-
-            let forecast = res?.list
-                .filter((item, index) => index === 0 || (index ) % 8 === 0)
-                .map((item) => {
-
-                    let obj = {
-                        ...item.main,
-                        ...item.weather?.[0],
-                        dt_txt: item.dt_txt,
-                        dt: item.dt
-                    };
-
-                    if(!hottest || obj.temp > hottest.temp) {
-                        hottest = {... obj}
-                    }
-
-                    if(!coldest || obj.temp < coldest.temp) {
-                        coldest = {... obj}
-                    }
-
-                    return obj;
-                });
-
-            setWeatherInfo({
-                info: res,
-                currentWeather: now,
-                rain: rainArray,
-                weatherForecast: forecast,
-                hottestWeather: hottest,
-                coldestWeather: coldest,
-            });
-        } catch (e) {
-            showToast(e, CONSTANTS.DANGER)
-            setError("Error Loading Dashboard");
-        } finally {
-            setLoading(false);
-        }
-
-    },[coordinates, showToast]);
-
     useEffect(() => {
         getCurrentLocation().then((position) => {
             setCoordinates( position.coords );
         }).catch((error) => showToast(error.message, CONSTANTS.DANGER));
-    },[])
+    },[showToast])
 
-    useEffect(() => {
-        if (coordinates) {
-            fetchWeatherInformation();
-        }
-    }, [coordinates, fetchWeatherInformation]);
+    const { weatherInfo, loading, error } = useWeather(
+        coordinates?.latitude,
+        coordinates?.longitude
+    );
 
     return (
         <>
