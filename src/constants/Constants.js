@@ -9,5 +9,10 @@ export const CONSTANTS = {
     DD_MM_YYYY_HH_MM_A: "dd-MM-yyyy hh:mma",
     DD_LLL: "dd LLL",
     HH_MM: "HH:mm",
-    CHART_COLOR: "#4CAF50"
+    CHART_COLOR: "#4CAF50",
+    CHART_SETTINGS: {
+        width: 600,
+        height: 200,
+    }
+
 }

@@ -16,11 +16,13 @@
     "@mui/x-charts": "^7.26.0",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
+    "leaflet": "^1.9.4",
     "luxon": "^3.5.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
+    "react-leaflet": "^5.0.0-rc.2",
     "react-router": "^7.1.5"
   },
   "devDependencies": {

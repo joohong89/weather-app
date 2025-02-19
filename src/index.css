@@ -144,6 +144,7 @@ body {
     }
   }
 }
+
 .selected-items {
   position: relative;
   z-index: 2;
@@ -261,9 +262,8 @@ body {
   }
 }
 
-.custom-chart {
-  border-radius: 1rem;
-  padding: 1.5rem;
+.custom-chart, .weather-card {
+
   background: var(--weather-seach-history-panel);
 
   .MuiChartsAxis-line, .MuiChartsAxis-tick {
@@ -274,6 +274,44 @@ body {
   }
 }
 
+.fiveDayForecast, .singleDayForecast, .weather-card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: var(--weather-seach-history-panel);
+
+  &.map {
+    height: 45vh;
+  }
+}
+
+.singleDayForecast {
+  height: 100%;
+}
+
+.weather-card-image-wrapper {
+  width: 25%;
+  min-width: 3rem;
+}
+
+.current-weather-card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  .title {
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: bolder;
+  }
+}
+
+.weather-card {
+  word-break: break-word;
+}
+
+.navbar {
+  .container {
+    max-width: 100% !important;
+  }
+}
 
 @media (max-width: 768px) {
   :root {

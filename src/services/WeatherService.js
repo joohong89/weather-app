@@ -29,6 +29,7 @@ export const WeatherService = {
             lat,
             lon,
             appid: API_KEY,
+            units: CONSTANTS.METRIC
         };
 
         try {
