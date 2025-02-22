@@ -57,12 +57,12 @@ const Dashboard = () => {
 
                                     <Col xs={12} sm={6} lg={12}>
                                         <div className="mt-4">
-                                            <WeatherCard weather={weatherInfo?.hottestWeather} title={"Hottest Temperature"} src={"/public/images/hottest.png"} />
+                                            <WeatherCard weather={weatherInfo?.hottestWeather} title={"Hottest Temperature"} src={"/images/hottest.png"} />
                                         </div>
                                     </Col>
                                     <Col xs={12} sm={6} lg={12}>
                                         <div className="mt-4">
-                                            <WeatherCard weather={weatherInfo?.coldestWeather} title={"Coldest Temperature"} src={"/public/images/coldest.png"} />
+                                            <WeatherCard weather={weatherInfo?.coldestWeather} title={"Coldest Temperature"} src={"/images/coldest.png"} />
                                         </div>
                                     </Col>
                                 </Row>
