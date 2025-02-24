@@ -10,9 +10,6 @@ function App() {
     <>
         <ThemeProvider>
             <ToastProvider>
-                <nav>
-                    <Navigation />
-                </nav>
                 <RouterProvider router={appRoute}></RouterProvider>
             </ToastProvider>
         </ThemeProvider>

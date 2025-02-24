@@ -21,5 +21,10 @@ export const Utils = {
         }
         let dt = DateTime.fromMillis(timeStamp); // Assuming timestamp is in milliseconds\
         return dt.toFormat(CONSTANTS.DD_MM_YYYY_HH_MM_A);
+    },
+    valueFormatter(value) {
+        let dt = DateTime.fromSeconds(value)
+        return `${dt.toFormat(CONSTANTS.DD_LLL)} \n ${dt.toFormat(CONSTANTS.HH_MM)}`;
     }
+
 }

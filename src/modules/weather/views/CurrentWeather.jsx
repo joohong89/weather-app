@@ -2,12 +2,12 @@ import SearchCity from "../components/SearchCity.jsx";
 import {Col, Row} from "react-bootstrap";
 import DisplayCurrentWeather from "../components/DisplayCurrentWeather.jsx";
 import {useCallback, useState} from "react";
-import {WeatherService} from "../services/WeatherService.js";
-import {Utils} from "../utils/Utils.jsx";
-import SearchHistoryService from "../services/SearchHistoryService.js";
+import {WeatherService} from "../../../services/WeatherService.js";
+import {Utils} from "../../../utils/Utils.jsx";
+import SearchHistoryService from "../../../services/SearchHistoryService.js";
 import SearchHistory from "../components/SearchHistory.jsx";
-import {useToast} from "../context/ToastContext.jsx";
-import {CONSTANTS} from "../constants/Constants.js";
+import {useToast} from "../../../context/ToastContext.jsx";
+import {CONSTANTS} from "../../../constants/Constants.js";
 
 const CurrentWeather = () => {
     const showToast = useToast();
@@ -43,7 +43,7 @@ const CurrentWeather = () => {
         <>
             <SearchCity onCityChange={cityChange} isParentLoading={isLoading}></SearchCity>
             {selectedCity && <div className="selected-items mb-2">Showing: {selectedCity && Utils.formatLocation(selectedCity.name, selectedCity.state, selectedCity.country)} </div>}
-            <Row className="justify-content-center weather-search-wrapper" >
+            <Row className="justify-content-center content-wrapper" >
                 <Col xs="12">
                     <DisplayCurrentWeather createdDatetime={createdDateTime} cityInformation={selectedCity} weatherInformation={weatherInformation}></DisplayCurrentWeather>
                 </Col>

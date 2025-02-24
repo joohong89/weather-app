@@ -1,6 +1,5 @@
-import axios from 'axios';
 import {CONFIG} from "../configs/Config.js";
-import {CONSTANTS} from "../constants/Constants.js";
+import {ApiError, axiosInstance} from "./APIClient.js";
 
 const API_END_POINT = import.meta.env.VITE_API_END_POINT;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -14,18 +13,12 @@ export const GeocodeService = {
         };
 
         try {
-            const response =  await axios.get(`${API_END_POINT}/geo/1.0/direct`, {params: params});
-
-            if (response.status !== CONSTANTS.HTTP_OK) {
-                throw new Error(`Geocoding API returned an error: ${response.status} - ${response.statusText}`);
-            }
+            const response =  await axiosInstance.get(`${API_END_POINT}/geo/1.0/direct`, {params: params});
 
             return response.data || undefined;
         } catch (error) {
-            console.error("Geocoding error:", error);
-            // catch locally thrown message from try above
-            if (error.response) {
-                throw new Error(`Geocoding failed: ${error.response.status} - ${error.response.data?.message || error.message}`);
+            if (error instanceof ApiError) {
+                throw error;
             }
             throw new Error(`Geocoding failed: ${error.message}`);
         }
