@@ -5,6 +5,7 @@ import PageNotFound from "./views/error/PageNotFound.jsx";
 import ForecastWeather from "./modules/weather/views/ForecastWeather.jsx";
 import DashboardLayout from "./layouts/DashboardLayout.jsx";
 import Dashboard from "./modules/dashboard/views/Dashboard.jsx";
+import CreateAlerts from "./modules/alerts/Views/CreateAlerts.jsx";
 
 const appRoute = createBrowserRouter([
     {
@@ -12,6 +13,7 @@ const appRoute = createBrowserRouter([
         children: [
             { path: "/", element: <CurrentWeather/> },
             { path: "/forecast/:lat/:lon", element: <ForecastWeather/> },
+            { path: "/alerts/create", element: <CreateAlerts/>}
         ]
     },
     {

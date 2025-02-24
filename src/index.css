@@ -89,8 +89,11 @@ body {
   }
 }
 
-.search-city-wrapper {
+.current-weather-city-search {
   margin-bottom: 6rem;
+}
+
+.search-city-wrapper {
   .search-city-button {
     font-size: 2rem;
     display: flex;

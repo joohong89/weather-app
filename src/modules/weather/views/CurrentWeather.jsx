@@ -41,7 +41,10 @@ const CurrentWeather = () => {
 
     return (
         <>
-            <SearchCity onCityChange={cityChange} isParentLoading={isLoading}></SearchCity>
+            <div className="current-weather-city-search">
+                <SearchCity onCityChange={cityChange} isParentLoading={isLoading}></SearchCity>
+            </div>
+
             {selectedCity && <div className="selected-items mb-2">Showing: {selectedCity && Utils.formatLocation(selectedCity.name, selectedCity.state, selectedCity.country)} </div>}
             <Row className="justify-content-center content-wrapper" >
                 <Col xs="12">
